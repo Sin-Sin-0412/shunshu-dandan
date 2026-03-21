@@ -38,11 +38,13 @@ a {
 .glass-panel {
   pointer-events: auto;
   background: rgba(255, 248, 240, 0.15);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  will-change: opacity, filter; 
+  will-change: opacity, filter, transform; 
   visibility: hidden;
   opacity: 0;
+  -webkit-transform: translateZ(0);
   transform: translateZ(0); 
 }
 
@@ -66,6 +68,7 @@ a {
   transform: translateY(-50%);
   width: 220px;
   padding: 15px;
+  -webkit-filter: url(#misty-player);
   filter: url(#misty-player);
 }
 
@@ -160,6 +163,7 @@ hr {
   bottom: 50px;
   font-size: 10px;
   padding: 20px;
+  -webkit-filter: url(#misty-credits);
   filter: url(#misty-credits);
 }
 

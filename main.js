@@ -17,6 +17,7 @@ const uiElement = document.getElementById("ui-layer");
 let isLoaded = false;
 let minTimePassed = false;
 const isMobile = window.innerWidth < 768;
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 
 function init(){
@@ -24,10 +25,18 @@ function init(){
 
   clock = new THREE.Clock();
 
+  if (isSafari) {
+    const turbulence = document.querySelector('#erosion-filter feTurbulence');
+    if (turbulence) {
+      turbulence.setAttribute('numOctaves', '1');
+    }
+  }
+
   renderer = new THREE.WebGLRenderer({
     canvas: canvas,
-    antialias: true,
-    alpha: true
+    antialias: isSafari ? false : true,
+    alpha: true,
+    powerPreference: "high-performance"
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(window.innerWidth, window.innerHeight);
