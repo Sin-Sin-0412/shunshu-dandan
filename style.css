@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;1,300&family=Klee+One&display=swap');*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden; 
+  background-color: #1a1a1a; 
+}
+
+a {
+  color: rgb(201, 135, 198);
+  text-decoration: underline;
+}
+
+#canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; 
+  outline: none;
+}
+
+#ui-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  font-family: "JetBrains Mono", monospace;
+  z-index: 100;
+  color: rgba(204, 211, 252, 0.729);
+}
+
+.glass-panel {
+  pointer-events: auto;
+  background: rgba(255, 248, 240, 0.15);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  will-change: opacity, filter; 
+  visibility: hidden;
+  opacity: 0;
+  transform: translateZ(0); 
+}
+
+#sound-trigger {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  letter-spacing: 0.5em;
+  font-size: 12px;
+  cursor: pointer;
+  pointer-events: auto;
+  color: rgba(204, 211, 252, 0.34);
+}
+
+#music-player {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  padding: 15px;
+  filter: url(#misty-player);
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.info {
+  flex-grow: 1; 
+}
+
+.reset-btn {
+  font-size: 14px;
+  opacity: 0; 
+  transition: all 0.3s ease;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-item:hover .reset-btn {
+  opacity: 0.4;
+}
+
+.reset-btn:hover {
+  opacity: 1 !important;
+  color: rgba(127, 255, 212, 1); 
+  transform: translateX(-3px); 
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(220, 220, 220, 0.5);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.track-item:hover .circle {
+  background: rgba(127, 255, 212, 0.4); 
+}
+
+.playing .circle {
+  animation: breathe 2s infinite ease-in-out;
+  background: rgba(127, 255, 212, 0.2);
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.info .title {
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+.info .artist {
+  font-size: 9px;
+  opacity: 0.6;
+}
+hr {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin: 0;
+}
+
+#credits-trigger {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 10px;
+  cursor: pointer;
+  pointer-events: auto;
+  color: rgba(204, 211, 252, 0.34);
+}
+
+#credits-popup {
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
+  font-size: 10px;
+  padding: 20px;
+  filter: url(#misty-credits);
+}
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background-color: hsla(0, 59%, 98%, 1);
+  background-image:
+    radial-gradient(at 27% 50%, hsla(147, 100%, 99%, 1) 0px, transparent 10%),
+    radial-gradient(at 80% 0%, hsla(220, 100%, 97%, 1) 0px, transparent 10%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  filter: url(#erosion-filter);
+  -webkit-filter: url(#erosion-filter);
+}
+
+#loading-title {
+  font-family: "Klee One", cursive;
+  font-size: 20px;
+  letter-spacing: 0.4em;
+  color: rgba(60, 60, 60, 0.8);
+  opacity: 0; 
+  filter: blur(0px); 
+}
+
+@media (max-width: 768px) {
+  #music-player {
+    color: #000000;
+  }
+
+  .circle {
+    border: 1px solid #4e4e4e;
+  }
+
+  #credits-popup {
+    color: #000000;
+  }
+
+  #sound-trigger {
+    font-size: 16px;
+    color: rgba(52, 55, 67, 0.643);
+    text-shadow: 1px 1px 0px rgba(230, 230, 247, 0.406);
+  }
+}
