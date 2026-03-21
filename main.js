@@ -16,6 +16,7 @@ let uiPos = {x: 0, y: 0, z: 0};
 const uiElement = document.getElementById("ui-layer");
 let isLoaded = false;
 let minTimePassed = false;
+const isMobile = window.innerWidth < 768;
 
 
 function init(){
@@ -93,9 +94,9 @@ function init(){
 
   animateBloom();
 
-
+  const noiseIntensity = isMobile ? 1 : 1.5;
   filmPass = new FilmPass(
-    1.5,
+    noiseIntensity,
     0,
     0,
     false
