@@ -4,7 +4,7 @@
 ---
 
 ### 🔗 Live Demo
-**[ ]**
+**[https://shunshu-dandan.netlify.app/]**
 
 ---
 
@@ -26,7 +26,7 @@
 - **Deployment**: Netlify
 
 ### 🖋 Credits
-- **Art & Code**: [あなたの名前] ( [@あなたのXアカウントID](https://x.com/あなたのユーザー名) )
+- **Art & Code**: [Shinya] ( https://x.com/sinsin_chaos )
 - **Music**:
   - "All of Everything" by Katy Kirby
   - "Clearing Houses" by Portrayal
