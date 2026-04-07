@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;1,300&family=Klee+One&display=swap');*,
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;1,300&family=Klee+One&display=swap");
+*,
 *::before,
 *::after {
   margin: 0;
@@ -7,8 +8,8 @@
 }
 
 body {
-  overflow: hidden; 
-  background-color: #1a1a1a; 
+  overflow: hidden;
+  background-color: #1a1a1a;
 }
 
 a {
@@ -22,7 +23,7 @@ a {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1; 
+  z-index: -1;
   outline: none;
 }
 
@@ -32,20 +33,21 @@ a {
   pointer-events: none;
   font-family: "JetBrains Mono", monospace;
   z-index: 100;
-  color: rgba(204, 211, 252, 0.729);
+  color: rgba(255, 255, 255, 0.729);
 }
 
 .glass-panel {
   pointer-events: auto;
   background: rgba(255, 248, 240, 0.15);
   -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  will-change: opacity, filter, transform; 
+  will-change: opacity, filter, transform;
   visibility: hidden;
   opacity: 0;
   -webkit-transform: translateZ(0);
-  transform: translateZ(0); 
+  transform: translateZ(0);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 #sound-trigger {
@@ -81,12 +83,12 @@ a {
 }
 
 .info {
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .reset-btn {
   font-size: 14px;
-  opacity: 0; 
+  opacity: 0;
   transition: all 0.3s ease;
   padding: 5px;
   display: flex;
@@ -100,8 +102,8 @@ a {
 
 .reset-btn:hover {
   opacity: 1 !important;
-  color: rgba(127, 255, 212, 1); 
-  transform: translateX(-3px); 
+  color: rgba(127, 255, 212, 1);
+  transform: translateX(-3px);
 }
 
 .circle {
@@ -113,7 +115,7 @@ a {
 }
 
 .track-item:hover .circle {
-  background: rgba(127, 255, 212, 0.4); 
+  background: rgba(127, 255, 212, 0.4);
 }
 
 .playing .circle {
@@ -191,13 +193,23 @@ hr {
   font-size: 20px;
   letter-spacing: 0.4em;
   color: rgba(60, 60, 60, 0.8);
-  opacity: 0; 
-  filter: blur(0px); 
+  opacity: 0;
+  filter: blur(0px);
 }
 
 @media (max-width: 768px) {
+
+  a {
+  color: rgb(113, 177, 148);
+  text-decoration: underline;
+}
+
   #music-player {
-    color: #000000;
+    color: #1c1c1c;
+  }
+
+  .glass-panel {
+    text-shadow: 0 0.5px 20px rgba(111, 195, 231, 0.587);
   }
 
   .circle {
@@ -205,7 +217,7 @@ hr {
   }
 
   #credits-popup {
-    color: #000000;
+    color: #1c1c1c;
   }
 
   #sound-trigger {
