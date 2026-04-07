@@ -68,7 +68,8 @@ a {
   right: 60px;
   top: 50%;
   transform: translateY(-50%);
-  width: 220px;
+  max-width: 220px;
+  width: 100%;
   padding: 15px;
   -webkit-filter: url(#misty-player);
   filter: url(#misty-player);
