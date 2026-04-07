@@ -7,7 +7,7 @@ export function createIntroController() {
 
   if (isSafari && screen) {
     screen.style.filter = "none";
-    screen.style.WebkitFilter = "none"; // iOS Safari向け
+    screen.style.WebkitFilter = "none"; 
   }
 
   const tl = gsap.timeline({ paused: true });
@@ -36,12 +36,12 @@ export function createIntroController() {
     });
 
   if (isSafari) {
-    // ▼ Safariの場合：シンプルなフェードアウト
+  
     tl.to(
       screen,
       {
         opacity: 0,
-        duration: 3, // フェードアウトの時間（元の5秒は少し長く感じるかもしれないので、お好みで調整してください）
+        duration: 3, 
         ease: "power2.inOut",
         onComplete: () => {
           screen.style.display = "none";
