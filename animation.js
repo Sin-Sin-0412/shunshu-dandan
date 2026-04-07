@@ -7,7 +7,7 @@ export function createIntroController() {
 
   if (isSafari && screen) {
     screen.style.filter = "none";
-    screen.style.WebkitFilter = "none"; 
+    screen.style.WebkitFilter = "none";
   }
 
   const tl = gsap.timeline({ paused: true });
@@ -36,12 +36,11 @@ export function createIntroController() {
     });
 
   if (isSafari) {
-  
     tl.to(
       screen,
       {
         opacity: 0,
-        duration: 3, 
+        duration: 3,
         ease: "power2.inOut",
         onComplete: () => {
           screen.style.display = "none";
@@ -58,6 +57,9 @@ export function createIntroController() {
         ease: "expoScale(1,2,power1.inOut)",
         onUpdate: function () {
           const val = this.targets()[0].offset;
+          if (val <= -2.5) {
+            screen.style.pointerEvents = "none";
+          }
           matrix.setAttribute(
             "values",
             `
