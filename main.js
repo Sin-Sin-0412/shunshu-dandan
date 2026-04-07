@@ -103,7 +103,7 @@ function init(){
 
   animateBloom();
 
-  const noiseIntensity = isMobile ? 1 : 1.5;
+  const noiseIntensity = isMobile ? 0.5 : 1.5;
   filmPass = new FilmPass(
     noiseIntensity,
     0,
