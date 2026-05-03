@@ -2,12 +2,18 @@ export function createIntroController() {
   const screen = document.getElementById("loading-screen");
   const title = document.getElementById("loading-title");
   const matrix = document.getElementById("erosion-matrix");
+  const canvas = document.getElementById("canvas");
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   if (isSafari && screen) {
     screen.style.filter = "none";
     screen.style.WebkitFilter = "none";
+
+    if (canvas) {
+      canvas.style.filter = "blur(20px)";
+      canvas.style.webkitFilter = "blur(20px)";
+    }
   }
 
   const tl = gsap.timeline({ paused: true });
@@ -48,6 +54,27 @@ export function createIntroController() {
       },
       "-=1.5",
     );
+
+    if (canvas) {
+      tl.to(
+        { blur: 20 },
+        {
+          blur: 0,
+          duration: 3.5,
+          ease: "power2.out",
+          onUpdate: function () {
+            const b = this.targets()[0].blur;
+            canvas.style.filter = `blur(${b}px)`;
+            canvas.style.webkitFilter = `blur(${b}px)`;
+          },
+          onComplete: () => {
+            canvas.style.filter = "";
+            canvas.style.webkitFilter = "";
+          },
+        },
+        "<1.2",
+      );
+    }
   } else {
     tl.to(
       { offset: 3 },

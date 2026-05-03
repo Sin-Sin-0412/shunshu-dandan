@@ -210,7 +210,7 @@ hr {
   }
 
   .glass-panel {
-    text-shadow: 0 0.5px 20px rgba(111, 195, 231, 0.587);
+    text-shadow: 0 0.5px 20px rgba(111, 195, 231, 0.255);
   }
 
   .circle {
